@@ -9,6 +9,7 @@ dist/
 
 # dependencies
 node_modules
+myvenv
 
 # profiling files
 chrome-profiler-events*.json
@@ -48,9 +49,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+.env
 
 # System Files
 .DS_Store
 Thumbs.db
 
-myvenv
