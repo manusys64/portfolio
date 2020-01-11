@@ -39,6 +39,9 @@ speed-measure-plugin*.json
 __pycache__
 db.sqlite3
 media
+__pycache__/
+*.py[cod]
+*$py.class
 
 # misc
 /.sass-cache
