@@ -28,9 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'martor',
     'psycopg2',
     'rest_framework',
-    'contacts'
+    'contacts',
+    'infos'
 ]
 
 MIDDLEWARE = [
