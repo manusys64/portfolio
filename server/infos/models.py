@@ -1,8 +1,7 @@
 from django.db import models
-from martor.models import MartorField
-
+from markdownx.models import MarkdownxField
 class About(models.Model):
-    content = MartorField()
+    content = MarkdownxField()
 
 class Skills(models.Model):
     genre = [

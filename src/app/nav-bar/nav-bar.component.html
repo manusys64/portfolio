@@ -1,0 +1,8 @@
+<div id="nav-bar">
+  <nav>
+    <a *ngFor="let nav of navs" routerLink="{{ nav.url }}"
+      routerLinkActive="active">
+      <i class="material-icons">{{ nav.icon }}</i>
+    </a>
+  </nav>
+</div>
