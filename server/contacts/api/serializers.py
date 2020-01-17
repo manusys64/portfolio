@@ -7,14 +7,12 @@ from contacts.models import Contact
 
 class ContactCreateSerializer(serializers.Serializer):
     name = serializers.CharField()
-    phone = serializers.CharField()
     email = serializers.EmailField()
     message = serializers.CharField()
     #
     def create(self, validated_data):
         Name = self.data.get('name')
         Email = self.data.get('email')
-        Phone = self.data.get('phone')
         Message = self.data.get('message')
 
         # from_email = ''

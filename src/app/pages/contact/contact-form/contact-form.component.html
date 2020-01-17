@@ -1,0 +1,33 @@
+<form [formGroup]="contactForm"
+  (ngSubmit)="onSubmit(contactForm)">
+
+  <div>
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="contactForm.controls.name.hasError('required')">
+      Please provide a name.
+    </div>
+  </div>
+
+
+  <div>
+    <label for="email">Email: </label>
+    <input id="email" type="email" formControlName="email">
+    <div *ngIf="contactForm.controls.email.hasError('required')">
+      Please provide an email.
+    </div>
+  </div>
+
+  <div>
+    <label for="message">Message: </label>
+    <textarea id="message" type="text"
+      formControlName="message"></textarea>
+    <div *ngIf="contactForm.controls.message.hasError('required')">
+      Please provide a message.
+    </div>
+  </div>
+
+  <button class="button" type="submit"
+  [disabled]="contactForm.invalid">Submit</button>
+
+</form>

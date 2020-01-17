@@ -1,8 +1,37 @@
-<div id="nav-bar">
+<nav class="navbar navbar-inverse d-block d-lg-none">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-toggle" id="menu-button"
+        data-toggle="collapse"data-target="#myNavbar">
+        <i class="fa fa-bars"></i>
+      </a>
+      <a class="navbar-brand" routerLink="/">RL</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <a *ngFor="let nav of navs" class="nav-icon"
+          routerLink="{{ nav.url }}"
+          routerLinkActive="active clicked">
+          <i class="{{ nav.icon }}"></i>
+          <p>{{nav.title }}</p>
+        </a>
+    </div>
+  </div>
+</nav>
+
+
+<div id="nav-bar" class="text-center d-none d-lg-block">
   <nav>
-    <a *ngFor="let nav of navs" routerLink="{{ nav.url }}"
-      routerLinkActive="active">
-      <i class="material-icons">{{ nav.icon }}</i>
-    </a>
+    <div *ngFor="let nav of navs">
+      <a routerLink="{{ nav.url }}" class="side-icon"
+         routerLinkActive="active">
+        <i class="{{ nav.icon }}"></i>
+        <p>{{ nav.title }}</p>
+      </a>
+    </div>
   </nav>
+  <ul class="side-link">
+    <li><a href="{{ link.url }}" target="_blank">
+      <i class="{{ link.icon}}"></i>
+    </a></li>
+  </ul>
 </div>
