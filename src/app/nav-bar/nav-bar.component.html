@@ -18,7 +18,6 @@
   </div>
 </nav>
 
-
 <div id="nav-bar" class="text-center d-none d-lg-block">
   <nav>
     <div *ngFor="let nav of navs">
@@ -30,8 +29,10 @@
     </div>
   </nav>
   <ul class="side-link">
-    <li><a href="{{ link.url }}" target="_blank">
-      <i class="{{ link.icon}}"></i>
-    </a></li>
+    <li *ngFor="let link of links">
+      <a href="{{ link.url }}" target="_blank">
+        <i class="{{ link.icon}}"></i>
+      </a>
+    </li>
   </ul>
 </div>

@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.styl']
 })
 export class NavBarComponent {
-  link = {icon: "fa fa-linkedin", url: "https://www.linkedin.com/in/ryusukelavalla/"}
+  links = [
+    {icon: "fa fa-linkedin", url: "https://www.linkedin.com/in/ryusukelavalla/"},
+    {icon: "fa fa-github", url: "https://github.com/fukusui"}
+  ]
   navs = [
     {title: "HOME", icon: "fa fa-home", url: "home"},
     {title: "ABOUT", icon: "fa fa-user", url: "about"},

@@ -2,32 +2,36 @@
   (ngSubmit)="onSubmit(contactForm)">
 
   <div>
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name">
-    <div *ngIf="contactForm.controls.name.hasError('required')">
-      Please provide a name.
-    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
   </div>
 
 
   <div>
-    <label for="email">Email: </label>
-    <input id="email" type="email" formControlName="email">
-    <div *ngIf="contactForm.controls.email.hasError('required')">
-      Please provide an email.
-    </div>
+    <input id="name" type="text"
+      formControlName="name" placeholder="Name">
+    <!-- <div *ngIf="contactForm.controls.name.hasError('required')"> -->
+    <!--   Please provide a name. -->
+    <!-- </div> -->
+  </div>
+
+
+  <div>
+    <input id="email" type="email"
+      formControlName="email" placeholder="Email">
+    <!-- <div *ngIf="contactForm.controls.email.hasError('required')"> -->
+    <!--   Please provide an email. -->
+    <!-- </div> -->
   </div>
 
   <div>
-    <label for="message">Message: </label>
     <textarea id="message" type="text"
-      formControlName="message"></textarea>
-    <div *ngIf="contactForm.controls.message.hasError('required')">
-      Please provide a message.
-    </div>
+      formControlName="message" placeholder="Message"></textarea>
+    <!-- <div *ngIf="contactForm.controls.message.hasError('required')"> -->
+    <!--   Please provide a message. -->
+    <!-- </div> -->
   </div>
 
-  <button class="button" type="submit"
+  <button type="button" class="btn btn-default"
   [disabled]="contactForm.invalid">Submit</button>
 
 </form>
