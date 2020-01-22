@@ -5,7 +5,7 @@ from infos.models import About, Skills
 class InfosTestCase(APITestCase):
     def test_about(self):
         data = "<p>This is a sample description</p>"
-        About.objects.create(content = data)
+        About.objects.create(selection = 'about', content = data)
         response = self.client.get("/api/infos/about")
         self.assertEqual(response.data[0]['content'], data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

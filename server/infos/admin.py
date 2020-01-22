@@ -1,6 +1,15 @@
 from django.contrib import admin
-from .models import About, Skills
+from django.db import models
+from .models import About, Skills, Work
 from markdownx.admin import MarkdownxModelAdmin
+from markdownx.widgets import AdminMarkdownxWidget
 
-admin.site.register(About, MarkdownxModelAdmin)
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ['selection']
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMarkdownxWidget},
+    }
+
+admin.site.register(About, AboutAdmin)
+admin.site.register(Work, MarkdownxModelAdmin)
 admin.site.register(Skills)
