@@ -10,6 +10,9 @@ class AboutAdmin(admin.ModelAdmin):
         models.TextField: {'widget': AdminMarkdownxWidget},
     }
 
+class SkillsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'section']
+
 admin.site.register(About, AboutAdmin)
 admin.site.register(Work, MarkdownxModelAdmin)
-admin.site.register(Skills)
+admin.site.register(Skills, SkillsAdmin)

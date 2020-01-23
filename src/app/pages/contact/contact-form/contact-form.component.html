@@ -1,37 +1,42 @@
-<form [formGroup]="contactForm"
+<form [formGroup]="contactForm" class="was-validated"
   (ngSubmit)="onSubmit(contactForm)">
 
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  <div class="form-group">
+    <input id="name" type="text" class="form-control"
+      formControlName="name" placeholder="Name" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback"
+      *ngIf="contactForm.controls.name.hasError('required')">
+        Please provide a name.
+    </div>
   </div>
 
-
-  <div>
-    <input id="name" type="text"
-      formControlName="name" placeholder="Name">
-    <!-- <div *ngIf="contactForm.controls.name.hasError('required')"> -->
-    <!--   Please provide a name. -->
-    <!-- </div> -->
+  <div class="form-group">
+    <input id="email" type="email" class="form-control"
+      formControlName="email" placeholder="Email" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback"
+      *ngIf="contactForm.controls.email.hasError('required')">
+      Please provide an email.
+    </div>
+    <div class="invalid-feedback"
+      *ngIf="contactForm.controls.email.hasError('email')">
+      Please provide a valid email address.
+    </div>
   </div>
 
-
-  <div>
-    <input id="email" type="email"
-      formControlName="email" placeholder="Email">
-    <!-- <div *ngIf="contactForm.controls.email.hasError('required')"> -->
-    <!--   Please provide an email. -->
-    <!-- </div> -->
+  <div class="form-group">
+    <textarea id="message" class="form-control"
+      type="text" required formControlName="message"
+      placeholder="Message" maxlength="3000"></textarea>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback"
+      *ngIf="contactForm.controls.message.hasError('required')">
+      Please provide a message.
+    </div>
   </div>
 
-  <div>
-    <textarea id="message" type="text"
-      formControlName="message" placeholder="Message"></textarea>
-    <!-- <div *ngIf="contactForm.controls.message.hasError('required')"> -->
-    <!--   Please provide a message. -->
-    <!-- </div> -->
-  </div>
-
-  <button type="button" class="btn btn-default"
+  <button type="submit" class="btn btn-default"
   [disabled]="contactForm.invalid">Submit</button>
 
 </form>

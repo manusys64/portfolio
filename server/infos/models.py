@@ -42,7 +42,7 @@ class Skills(models.Model):
     ]
     name = models.CharField(max_length=30)
     section = models.CharField(max_length=10, choices= genre)
-
+    url = models.CharField(max_length=300)
     class Meta:
         verbose_name = 'Skill'
         verbose_name_plural = 'Skilles'

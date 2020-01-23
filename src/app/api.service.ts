@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable, from } from 'rxjs';
-import { switchMap, filter, map, shareReplay } from 'rxjs/operators';
+import { switchMap, filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  private apiUrl = environment.apiUrl;
   about$: Observable<any>;
   constructor(private http: HttpClient) {
     this.about$ = this.http.get(
-      environment.apiUrl+'infos/about').pipe(
+      this.apiUrl+'infos/about').pipe(
         switchMap((response:any) => from(response))
       );
   }
@@ -36,6 +37,11 @@ export class ApiService {
       filter((data: any) => data.selection==="work"),
       map(data => data.content)
     );
+  }
+
+  postContact(contact): Observable<any> {
+    return this.http.post(
+      this.apiUrl+"contact/create", contact);
   }
 
 }

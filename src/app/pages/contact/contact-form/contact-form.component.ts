@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../../api.service';
+
 
 @Component({
   selector: 'contact-form',
@@ -9,21 +11,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ContactFormComponent implements OnInit {
   contactForm : FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private api: ApiService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required,
         Validators.email]],
-      message: ['', [Validators.required,
-        Validators.minLength(30),
-        Validators.maxLength(3000)]]
+      message: ['', [Validators.required]]
     });
   }
 
   onSubmit() {
-    console.log(this.contactForm.value)
+    if (this.contactForm.valid) {
+      this.api.postContact(this.contactForm.value)
+        .subscribe(data => {
+          alert("Thank you!");
+          this.contactForm.reset();
+        });
+    }
   }
 
 }
