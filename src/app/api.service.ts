@@ -31,12 +31,15 @@ export class ApiService {
     );
   }
 
-
   workData(): Observable<any> {
     return this.about$.pipe(
       filter((data: any) => data.selection==="work"),
       map(data => data.content)
     );
+  }
+
+  skillsIcons(): Observable<any> {
+    return this.http.get(this.apiUrl+"infos/skills");
   }
 
   postContact(contact): Observable<any> {

@@ -1,9 +1,16 @@
-<div class="row page">
-  <div class="col-lg-6 left-page">
-    <h1>About</h1>
-    <markdown [data]="markdown"></markdown>
+<div class="page top">
+  <div class="row">
+    <div class="col-lg-6 left-page">
+      <h1>About</h1>
+      <markdown [data]="markdown"></markdown>
   </div>
-  <div class="col-lg-6 right-page">
-
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="col-12 col-sm-6 points text-center" *ngFor="let point of points">
+          <i class="{{ point.img }}"></i>
+          <h3>{{ point.genre }}</h3>
+          <p>{{ point.info }}</p>
+      </div>
+    </div>
   </div>
 </div>

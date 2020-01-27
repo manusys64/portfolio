@@ -17,18 +17,19 @@
     </div>
   </div>
 </nav>
-
-<div id="nav-bar" class="text-center d-none d-lg-block">
+<!--  -->
+<div class="sidenav d-none d-lg-block text-center">
   <a class="navbar-brand" routerLink="/">RL</a>
-  <nav>
-    <div *ngFor="let nav of navs">
-      <a routerLink="{{ nav.url }}" class="side-icon"
-         routerLinkActive="active">
-        <i class="{{ nav.icon }}"></i>
-        <p>{{ nav.title }}</p>
-      </a>
-    </div>
-  </nav>
+  <!--  -->
+  <div class="side-position">
+    <a *ngFor="let nav of navs" routerLink="{{ nav.url }}"
+       class="side-icon"
+       routerLinkActive="active">
+      <i class="{{ nav.icon }}"></i>
+      <p>{{ nav.title }}</p>
+    </a>
+  </div>
+  <!--  -->
   <ul class="side-link">
     <li *ngFor="let link of links">
       <a href="{{ link.url }}" target="_blank">

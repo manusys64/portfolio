@@ -22,7 +22,7 @@ class Work(models.Model):
     ]
     selection = models.CharField(max_length=10, choices=genre)
     title = models.CharField(max_length=200)
-    img = models.URLField(max_length=200)
+    img = models.ImageField(upload_to='images/')
     descripiton = MarkdownxField()
     keywords = ArrayField(
         ArrayField(models.CharField(max_length=30))
