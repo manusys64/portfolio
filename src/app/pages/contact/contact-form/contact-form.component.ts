@@ -9,7 +9,7 @@ import { ApiService } from '../../../api.service';
   styleUrls: ['./contact-form.component.styl']
 })
 export class ContactFormComponent implements OnInit {
-  contactForm : FormGroup;
+  contactForm: FormGroup;
 
   constructor(private api: ApiService, private fb: FormBuilder) {}
 
@@ -22,9 +22,9 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.api.postContact(this.contactForm.value)
+  onSubmit(data) {
+    if (data) {
+      this.api.postContact(data.value)
         .subscribe(data => {
           alert("Thank you!");
           this.contactForm.reset();

@@ -1,14 +1,22 @@
 <div class="page">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 left-page">
       <h1>Contact me</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      <p>If you have questions, feel free to reach out to me by filling out the form below.</p>
       <contact-form></contact-form>
     </div>
+<!--  -->
     <div class="col-lg-6">
       <div id="info-table">
-
+        <ul>
+          <li *ngFor="let contact of contacts">
+            <i class="{{ contact.icon }}"></i>
+            <p>{{ contact.info }}</p>
+          </li>
+        </ul>
       </div>
     </div>
+<!--    -->
   </div>
+<!--  -->
 </div>
