@@ -23,13 +23,13 @@ class Work(models.Model):
     selection = models.CharField(max_length=10, choices=genre)
     title = models.CharField(max_length=200)
     img = models.ImageField(upload_to='images/')
-    descripiton = MarkdownxField()
+    url = models.CharField(blank=True, max_length=100)
+    code = models.CharField(blank=True, max_length=100)
+    description = MarkdownxField()
     keywords = ArrayField(
         ArrayField(models.CharField(max_length=30))
     )
-    points = ArrayField(
-        ArrayField(models.CharField(max_length=350))
-    )
+
     class Meta:
         verbose_name = 'work'
         verbose_name_plural = 'works'

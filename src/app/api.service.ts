@@ -42,6 +42,10 @@ export class ApiService {
     return this.http.get(this.apiUrl+"infos/skills");
   }
 
+  workList(): Observable<any> {
+    return this.http.get(this.apiUrl+"infos/work");
+  }
+
   postContact(contact): Observable<any> {
     return this.http.post(
       this.apiUrl+"contact/create", contact);

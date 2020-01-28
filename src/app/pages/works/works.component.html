@@ -1,3 +1,27 @@
 <div class="page">
+
   <h1>Work</h1>
+
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let work of works">
+      <div class="work">
+        <div class="work-img"
+          [ngStyle]="{'background-image': 'url(' + work.img + ')'}">
+        </div>
+        <h3>{{ work.title }}</h3>
+        <p>{{ work.description }}</p>
+        <h5><span *ngFor="let item of work.keywords"
+          class="badge badge-secondary">{{ item }}</span></h5>
+        <a class="btn btn-outline-primary"
+          href="{{ work.url }}" *ngIf="work.url">
+          <i class="fa fa-globe"> Link</i>
+        </a>
+        <a class="btn btn-outline-primary"
+          href="{{ work.code }}" *ngIf="work.code">
+          <i class="fa fa-github"> Code</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>
