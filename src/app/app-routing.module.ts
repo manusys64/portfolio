@@ -7,11 +7,16 @@ import { WorksComponent } from './pages/works/works.component';
 import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'skills', component: SkillsComponent },
-  { path: 'work', component: WorksComponent },
+  { path: 'home',component: HomeComponent,
+    data: { title: 'RL | Full Stack Developer' }},
+  { path: 'about', component: AboutComponent,
+    data: {title: 'About | RL'} },
+  { path: 'contact', component: ContactComponent,
+    data: {title: 'Contact | RL'}  },
+  { path: 'skills', component: SkillsComponent,
+    data: {title: 'Skills | RL'} },
+  { path: 'work', component: WorksComponent,
+    data: {title: 'Work | RL'} },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
