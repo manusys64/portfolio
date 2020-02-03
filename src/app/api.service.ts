@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable, from } from 'rxjs';
 import { switchMap, filter, map } from 'rxjs/operators';
@@ -15,6 +15,13 @@ export class ApiService {
       this.apiUrl+'infos/about').pipe(
         switchMap((response:any) => from(response))
       );
+  }
+
+  private getCookie(name){
+    let value = "; " + document.cookie;
+    let parts = value.split("; " + name + "=");
+    if (parts.length == 2)
+      return parts.pop().split(";").shift();
   }
 
   aboutData(): Observable<any> {
@@ -47,8 +54,14 @@ export class ApiService {
   }
 
   postContact(contact): Observable<any> {
+  	let httpOptions = {
+  		headers: new HttpHeaders({
+    		'Content-Type':  'application/json',
+      	'X-CSRFToken': this.getCookie('csrftoken')
+  		})
+		};
     return this.http.post(
-      this.apiUrl+"contact/create", contact);
+      this.apiUrl+"contact/create", contact, httpOptions);
   }
 
 }
