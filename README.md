@@ -1,11 +1,7 @@
 # Portfolio
-
+A simple angular django website.
+Please check out the code.
 ## Development server
-
-## Build
-
-## Running unit tests
-
-
-## Running end-to-end tests
-
+```
+localhost:4200
+```
