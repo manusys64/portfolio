@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://34.199.187.54/api/",
+  apiUrl: "https://ryusuke.live/api/",
 };
