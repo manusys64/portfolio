@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { Observable, from } from 'rxjs';
-import { switchMap, filter, map } from 'rxjs/operators';
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
+import { Contact } from './models/contact.model';
+import { About } from './models/about.model';
+import { Work } from './models/work.model';
+import { Skill } from './models/skill.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  private about$: Observable<any>;
   private apiUrl = environment.apiUrl;
-  about$: Observable<any>;
+
   constructor(private http: HttpClient) {
-    this.about$ = this.http.get(
+    this.about$ = this.http.get<About[]>(
       this.apiUrl+'infos/about').pipe(
-        switchMap((response:any) => from(response))
+        switchMap((response: About[]) => from(response)),
+				catchError(this.errorMgmt)
       );
   }
 
@@ -26,42 +32,60 @@ export class ApiService {
 
   aboutData(): Observable<any> {
     return this.about$.pipe(
-      filter((data: any) => data.selection==="about"),
-      map(data => data.content)
+      filter((data: About) => data.selection==="about"),
+      map(data => data.content),
+			catchError(this.errorMgmt)
     );
   }
 
   skillsData(): Observable<any> {
     return this.about$.pipe(
-      filter((data: any) => data.selection==="skills"),
-      map(data => data.content)
+      filter((data: About) => data.selection==="skills"),
+      map(data => data.content),
+			catchError(this.errorMgmt)
     );
   }
 
   workData(): Observable<any> {
     return this.about$.pipe(
-      filter((data: any) => data.selection==="work"),
-      map(data => data.content)
+      filter((data: About) => data.selection==="work"),
+      map(data => data.content),
+			catchError(this.errorMgmt)
     );
   }
 
   skillsIcons(): Observable<any> {
-    return this.http.get(this.apiUrl+"infos/skills");
+    return this.http.get<Skill[]>(this.apiUrl+"infos/skills");
   }
 
   workList(): Observable<any> {
-    return this.http.get(this.apiUrl+"infos/work");
+    return this.http.get<Work[]>(this.apiUrl+"infos/work");
   }
 
-  postContact(contact): Observable<any> {
+  postContact(contact: Contact): Observable<any> {
   	let httpOptions = {
   		headers: new HttpHeaders({
     		'Content-Type':  'application/json',
       	'X-CSRFToken': this.getCookie('csrftoken')
   		})
 		};
-    return this.http.post(
-      this.apiUrl+"contact/create", contact, httpOptions);
+    return this.http.post<Contact>(
+      this.apiUrl+"contact/create", contact, httpOptions).pipe(
+				catchError(this.errorMgmt)
+			);
+  }
+
+  private errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 
 }
