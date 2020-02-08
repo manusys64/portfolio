@@ -27,7 +27,6 @@ import { MarkdownModule } from 'ngx-markdown';
     AboutComponent,
     NavBarComponent,
     ContactFormComponent,
-    // MarkedDirective
   ],
   imports: [
     BrowserModule,

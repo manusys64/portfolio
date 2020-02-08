@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,
+  HttpRequest, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable, from, throwError } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
-import { Contact } from './models/contact.model';
-import { About } from './models/about.model';
-import { Work } from './models/work.model';
-import { Skill } from './models/skill.model';
+import { About, Contact, Skill, Work } from './models/index';
 
 @Injectable({
   providedIn: 'root'

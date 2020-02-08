@@ -4,6 +4,6 @@ export class Work {
   img: String;
   url?: String;
   code?: String;
-  descripition: String;
+  description: String;
   keywords: Array<string>;
 }
