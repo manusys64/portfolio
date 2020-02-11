@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../api.service';
-
+import { Contact } from '../../../models/contact.model';
 
 @Component({
   selector: 'contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.styl']
 })
-export class ContactFormComponent implements OnInit {
+export class ContactFormComponent {
   contactForm: FormGroup;
+  @Output() submitted = new EventEmitter<Contact>();
 
-  constructor(private api: ApiService, private fb: FormBuilder) {}
+  constructor(private api: ApiService, private fb: FormBuilder) {
+    this.form();
+  }
 
-  ngOnInit() {
+  private form() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required,
@@ -22,13 +25,15 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  onSubmit(data) {
-    if (data) {
-      this.api.postContact(data.value)
-        .subscribe(data => {
-          alert("Thank you!");
-          this.contactForm.reset();
-        });
+  onSubmit() {
+    if (this.contactForm.valid) {
+      this.submitted.emit (new Contact(
+          this.contactForm.value.name,
+          this.contactForm.value.email,
+          this.contactForm.value.message
+      ));
+      // alert("Thank you!");
+      // this.contactForm.reset();
     }
   }
 

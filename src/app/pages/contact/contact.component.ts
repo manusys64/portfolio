@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { Contact } from '../../models/contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +14,11 @@ export class ContactComponent {
     { icon: "fa fa-envelope", info: "lavalla@protonmail.com"}
   ]
 
-  constructor() { }
+  constructor(private api: ApiService) { }
+
+  onFormSubmit(contact: Contact) {
+      this.api.postContact(contact)
+        .subscribe(data => {});
+  }
 
 }

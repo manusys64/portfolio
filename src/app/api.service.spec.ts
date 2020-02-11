@@ -5,7 +5,7 @@ import {
 import { ApiService } from './api.service';
 import { environment } from '../environments/environment';
 import { About, Skill, Work } from './models/index';
-
+import { HttpClientModule, HttpRequest, HttpParams } from '@angular/common/http';
 const url = environment.apiUrl;
 
 describe('ApiService', () => {
