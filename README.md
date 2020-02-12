@@ -5,3 +5,7 @@ Please check out the code.
 ```
 localhost:4200
 ```
+## Client side testing
+```
+ng test
+```
