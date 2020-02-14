@@ -28,19 +28,23 @@ export class AppComponent implements OnInit {
           return route;
         }
       }),
-      filter((route) => route.outlet ==='primary'),
+      filter((route) => route.outlet === 'primary'),
       mergeMap((route) => route.data)
     ).subscribe((event) => this.titleService.setTitle(event['title']));
 
     this.metaTagService.addTags([
-		  { name: 'keywords', content: 'Full Stack Developer, Web Development, Blockchain' },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'Ryusuke Lavalla' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'date', content: '2020-2-1', scheme: 'YYYY-MM-DD' },
-      { charset: 'UTF-8' },
-      { name: 'description', content: 'Ryusuke is a full stack web developer, Blockchain developer, Full stack application developer, based in Brooklyn New York.'}
-		]);
+      {name: 'keywords', content: 'Full Stack Developer, Web Development, Blockchain'},
+      {name: 'robots', content: 'index, follow'},
+      {name: 'author', content: 'Ryusuke Lavalla'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {name: 'date', content: '2020-2-1',
+        scheme: 'YYYY-MM-DD'
+      },
+      {name: 'description', content: 'Ryusuke is a full stack web developer,\
+        Blockchain developer, Full stack application developer, based in \
+        Brooklyn New York.'},
+      {charset: 'UTF-8'}
+    ]);
   }
 
 }

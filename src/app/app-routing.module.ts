@@ -7,8 +7,8 @@ import { WorksComponent } from './pages/works/works.component';
 import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
-  { path: 'home',component: HomeComponent,
-    data: { title: 'RL | Full Stack Developer' }},
+  { path: 'home', component: HomeComponent,
+    data: { title: 'RL | Full Stack Developer' } },
   { path: 'about', component: AboutComponent,
     data: {title: 'About | RL'} },
   { path: 'contact', component: ContactComponent,
