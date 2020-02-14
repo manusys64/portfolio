@@ -1,4 +1,4 @@
 export class About {
-  selection: String;
-  content: String;
+  selection: string;
+  content: string;
 }

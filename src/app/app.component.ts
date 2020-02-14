@@ -1,3 +1,4 @@
+/* tslint:disable:no-string-literal */
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -10,26 +11,28 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
-export class AppComponent implements OnInit{
-  constructor(private router: Router,
+export class AppComponent implements OnInit {
+  constructor(
+    private router: Router,
     private metaTagService: Meta,
     private activatedRoute: ActivatedRoute,
     private titleService: Title) {}
 
   ngOnInit() {
-    //Title Service//
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(() => this.activatedRoute),
       map((route) => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
+        while (route.firstChild) {
+          route = route.firstChild;
+          return route;
+        }
       }),
       filter((route) => route.outlet ==='primary'),
       mergeMap((route) => route.data)
     ).subscribe((event) => this.titleService.setTitle(event['title']));
-    //SEO Tags
-		this.metaTagService.addTags([
+
+    this.metaTagService.addTags([
 		  { name: 'keywords', content: 'Full Stack Developer, Web Development, Blockchain' },
       { name: 'robots', content: 'index, follow' },
       { name: 'author', content: 'Ryusuke Lavalla' },

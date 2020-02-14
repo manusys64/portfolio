@@ -9,10 +9,10 @@ import { Contact } from '../../models/contact.model';
 })
 export class ContactComponent {
   contacts = [
-    { icon: "fa fa-user", info: "Ryusuke Lavalla" },
-    { icon: "fa fa-home", info: "Brooklyn, New York"},
-    { icon: "fa fa-envelope", info: "lavalla@protonmail.com"}
-  ]
+    { icon: 'fa fa-user', info: 'Ryusuke Lavalla' },
+    { icon: 'fa fa-home', info: 'Brooklyn, New York'},
+    { icon: 'fa fa-envelope', info: 'lavalla@protonmail.com'}
+  ];
 
   constructor(private api: ApiService) { }
 

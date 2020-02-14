@@ -1,5 +1,5 @@
 export class Skill {
-  name: String;
-  section: String;
-  url: String;
+  name: string;
+  section: string;
+  url: string;
 }

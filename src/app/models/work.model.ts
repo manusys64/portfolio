@@ -1,9 +1,9 @@
 export class Work {
-  selection: String;
-  title: String;
-  img: String;
-  url?: String;
-  code?: String;
-  description: String;
+  selection: string;
+  title: string;
+  img: string;
+  url?: string;
+  code?: string;
+  description: string;
   keywords: Array<string>;
 }

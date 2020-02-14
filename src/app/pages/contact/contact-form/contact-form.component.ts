@@ -4,7 +4,7 @@ import { ApiService } from '../../../api.service';
 import { Contact } from '../../../models/contact.model';
 
 @Component({
-  selector: 'contact-form',
+  selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.styl']
 })
@@ -32,7 +32,7 @@ export class ContactFormComponent {
           this.contactForm.value.email,
           this.contactForm.value.message
       ));
-      alert("Thank you!");
+      alert('Thank you!');
       this.contactForm.reset();
     }
   }
