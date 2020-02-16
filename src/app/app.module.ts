@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AboutComponent, ContactComponent, HomeComponent,
   SkillsComponent, WorksComponent, ContactFormComponent} from './pages/index';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ModalModule } from './modal/index';
 import { ApiService } from './api.service';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -20,12 +21,13 @@ import { MarkdownModule } from 'ngx-markdown';
     WorksComponent,
     AboutComponent,
     NavBarComponent,
-    ContactFormComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ModalModule,
     MarkdownModule.forRoot(),
     RouterModule,
     AppRoutingModule

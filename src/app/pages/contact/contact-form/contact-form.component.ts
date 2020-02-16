@@ -32,7 +32,6 @@ export class ContactFormComponent {
           this.contactForm.value.email,
           this.contactForm.value.message
       ));
-      alert('Thank you!');
       this.contactForm.reset();
     }
   }

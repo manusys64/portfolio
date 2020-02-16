@@ -20,6 +20,7 @@
 </head>
 <body>
   <app-root>Loading...</app-root>
+  <script>var csrftoken = '{{ csrf_token }}';</script>
   <script src="{% static 'dist/runtime-es2015.js' %}" type="module"></script>
   <script src="{% static 'dist/runtime-es5.js' %}" nomodule defer></script>
   <script src="{% static 'dist/polyfills-es5.js' %}" nomodule defer></script>
